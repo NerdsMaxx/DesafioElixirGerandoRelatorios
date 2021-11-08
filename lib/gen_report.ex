@@ -22,14 +22,11 @@ defmodule GenReport do
         "hours_per_month" => people_month,
         "hours_per_year" => people_year
       }) do
-    people_hours = people_hours |> sum_people_hours(name, hours)
-    people_month = people_month |> sum_people_month(name, hours, month)
-    people_year = people_year |> sum_people_year(name, hours, year)
 
     %{
-      "all_hours" => people_hours,
-      "hours_per_month" => people_month,
-      "hours_per_year" => people_year
+      "all_hours" => people_hours |> sum_people_hours(name, hours),
+      "hours_per_month" => people_month |> sum_people_month(name, hours, month),
+      "hours_per_year" => people_year |> sum_people_year(name, hours, year)
     }
   end
 
